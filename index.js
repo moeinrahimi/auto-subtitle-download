@@ -1,13 +1,11 @@
 #!/usr/bin/env node
 const fs = require('fs');
-const chalk = require('chalk');
 const path = require('path');
 const subscene = require('node-subscene');
 var AdmZip = require('adm-zip');
 const axios = require('axios');
-const cliSelect = require('cli-select');
 var { Registry } = require('rage-edit');
-const { prompt } = require('inquirer');
+const { prompt } = require('enquirer');
 const headers = {
   'User-Agent':
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36',
@@ -42,7 +40,12 @@ async function run() {
   let answers = await prompt(questions);
   let selected = search.find((item) => item.title.trim() == answers.value.trim());
   let list = await subscene.getList(selected.url);
+
   list = list.filter((item) => item.language == 'Farsi/Persian');
+  if (list.length === 0) {
+    console.log('no farsi subtitle available.');
+    return;
+  }
   if (isTv) {
     list.sort((a, b) => {
       if (a.title.includes(episode)) return -1;
@@ -160,6 +163,5 @@ registerContextMenu();
 
 //pkg index.js --target node14-win-x64 --compress Brotli -o
 //TODO: works without context
-
 
 // (Hi10)_Monster_-_01_(DVD_480p)_(Figmentos)
