@@ -4,20 +4,24 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "lint":"eslint index.js --fix"
+    "lint": "eslint index.js --fix"
   },
   "dependencies": {
     "adm-zip": "^0.5.7",
     "axios": "^0.22.0",
-    "chalk": "^4.1.2",
-    "cheerio": "^1.0.0-rc.10",
-    "cli-select": "^1.1.2",
+    "enquirer": "^2.3.6",
     "node-subscene": "moeinrahimi/node-subscene#master",
-    "regedit": "^5.0.0",
-    "windows-elevate": "^1.0.1"
+    "rage-edit": "^1.2.0"
   },
   "bin": {
     "subtitle": "./index.js"
+  },
+  "pkg": {
+    "scripts": "index.js",
+    "targets": [
+      "node14-win-x64"
+    ],
+    "outputPath": "dist"
   },
   "devDependencies": {
     "eslint": "^7.32.0"
