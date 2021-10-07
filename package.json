@@ -21,7 +21,8 @@
     "targets": [
       "node14-win-x64"
     ],
-    "outputPath": "dist"
+    "outputPath": "build",
+    "output":"subtitle"
   },
   "devDependencies": {
     "eslint": "^7.32.0"
